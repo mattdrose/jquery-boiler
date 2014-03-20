@@ -1,12 +1,12 @@
 {
-  name: "jquery-boiler",
-  version: "0.1.0",
-  authors: [
+  "name": "jquery-boiler",
+  "version": "0.1.0",
+  "authors": [
     "Matt Rose <matt@mattrose.ca>"
   ],
-  description: "A jQuery plugin to help you quickly write custom jQuery plugins.",
-  main: "jquery.boiler.js",
-  keywords: [
+  "description": "A jQuery plugin to help you quickly write custom jQuery plugins.",
+  "main": "jquery.boiler.js",
+  "keywords": [
     "jquery",
     "plugin",
     "boiler",
@@ -14,5 +14,5 @@
     "jquery-plugin",
     "jquery-boilerplate"
   ],
-  license: "MIT"
+  "license": "MIT"
 }
