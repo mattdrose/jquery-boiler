@@ -60,9 +60,13 @@
 
           //check for events
           if(plugin.events){
-            $.each(plugin.events, function(event, method){
-              plugin.$el.on(event, function(e){
-                plugin[method].call(plugin, e);
+            $.each(plugin.events, function(eventString, handler){
+              var tmp = eventString.split(' '),
+                  event = tmp[0],
+                  selector = tmp.slice(1).join(' ') || null;
+
+              plugin.$el.on(event, selector, function(e){
+                plugin[handler].call(plugin, e, this);
               });
             });
           }
