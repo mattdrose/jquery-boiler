@@ -6,3 +6,8 @@ before_script:
   - npm install -g bower
   - bower install
 script: grunt --verbose
+env:
+  global:
+    - secure: egQ+/nBs2TLgAfC2SOF3BtmvHCIFv+i0hCcOXLx1eWeFsQaV9zgVeqCQ0jwDB5CC5LspINDmvYwEbBlUoZq7RzE5ER2oZ1pqsb4Li8CEZVSHPFbCeA5YZGkPVqYzGKtsa3sfrDgWOJNs7HWFhETUAPj1RwJcHxv5c8QbKElKlfw=
+    - secure: CmNR5ZIMD0Qq2ncE8Z1vJZ2T6cTU1erCpkWf6CjLL1xWV3S7nXCqTrI7OWDbgqjdduaaOnw2KTBECFwH4fsnshZYxSwFto4/D6U1vGL4ctqz0AcytBn6TjvaMCT+gqy4La3L5VjgqaUQQrBCKLsmKz95N1U8vW9reZ45Itdpn/E=
+
