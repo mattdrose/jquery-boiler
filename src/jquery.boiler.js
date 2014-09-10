@@ -12,9 +12,9 @@
 
   'use strict';
 
-  $.boiler = function(namespace, base){
+  $.boiler = function (namespace, base) {
 
-    $.fn[namespace] = function(){
+    $.fn[namespace] = function () {
 
       var args = Array.prototype.slice.call(arguments),
         method = args[0],
@@ -22,11 +22,11 @@
         selector = this.selector,
         query = [];
 
-      return this.each(function(){
+      return this.each(function () {
 
         var cachedPlugin = $(this).data(namespace);
 
-        if(cachedPlugin === undefined){
+        if (cachedPlugin === undefined) {
           //make a clone of the base
           var plugin = {};
           $.extend(plugin, base);
@@ -42,13 +42,13 @@
           plugin.$el.data(namespace, plugin);
 
           //cache the options
-          if(method !== undefined) plugin.options = method;
+          if (method !== undefined) plugin.options = method;
 
           //check for data attributes
-          if(plugin.data){
+          if (plugin.data) {
             var dataList = plugin.data;
             plugin.data = {};
-            $.each(dataList, function(index, name){
+            $.each(dataList, function (index, name) {
               plugin.data[name] = plugin.$el.data(name);
             });
           }
@@ -61,13 +61,13 @@
           );
 
           //check for events
-          if(plugin.events){
-            $.each(plugin.events, function(eventString, handler){
+          if (plugin.events) {
+            $.each(plugin.events, function (eventString, handler) {
               var tmp = eventString.split(' '),
                   event = tmp[0],
                   selector = tmp.slice(1).join(' ') || null;
 
-              plugin.$el.on(event, selector, function(e){
+              plugin.$el.on(event, selector, function (e) {
                 plugin[handler].call(plugin, e, this);
               });
             });
@@ -76,9 +76,9 @@
           //fire up the plugin!
           if (plugin.init) plugin.init();
 
-        }else if(cachedPlugin[method] && method.charAt(0) != '_'){
+        } else if (cachedPlugin[method] && method.charAt(0) != '_') {
           //if method is a function
-          if (typeof cachedPlugin[method] === 'function'){
+          if (typeof cachedPlugin[method] === 'function') {
             cachedPlugin[method].apply(cachedPlugin, options);
           //otherwise, treat it as a propery and reset it
           } else {
