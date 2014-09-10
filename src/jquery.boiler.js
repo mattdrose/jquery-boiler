@@ -10,6 +10,8 @@
 
 })(function ($) {
 
+  'use strict';
+
   $.boiler = function(namespace, base){
 
     $.fn[namespace] = function(){
@@ -80,7 +82,7 @@
             cachedPlugin[method].apply(cachedPlugin, options);
           //otherwise, treat it as a propery and reset it
           } else {
-            cachedPlugin[method] = options;
+            cachedPlugin[method] = options[0];
           }
 
         }
