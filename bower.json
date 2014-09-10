@@ -1,11 +1,8 @@
 {
   "name": "jquery-boiler",
   "version": "0.1.0",
-  "authors": [
-    "Matt Rose <matt@mattrose.ca>"
-  ],
+  "title": "jQuery Boiler",
   "description": "A jQuery plugin to help you quickly write custom jQuery plugins.",
-  "main": "jquery.boiler.js",
   "keywords": [
     "jquery",
     "plugin",
@@ -14,5 +11,30 @@
     "jquery-plugin",
     "jquery-boilerplate"
   ],
-  "license": "MIT"
+  "homepage": "https://github.com/mattdrose/jquery-boiler",
+  "author": {
+    "name": "Matt Rose",
+    "url": "http://mattrose.ca"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattdrose/jquery-boiler.git"
+  },
+  "bugs": "https://github.com/mattdrose/jquery-boiler/issues",
+  "license": "MIT",
+  "main": [
+    "src/jquery.boiler.js"
+  ],
+  "ignore": [
+    "test",
+    "Gruntfile.js",
+    "package.json",
+    "*.md"
+  ],
+  "dependencies": {
+    "jquery": ">=1.6"
+  },
+  "devDependencies": {
+    "qunit": "~1.12.0"
+  }
 }
