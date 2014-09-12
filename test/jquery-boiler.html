@@ -3,22 +3,11 @@
 <head>
   <meta charset="utf-8">
   <title>jQuery Boiler Test</title>
-
-  <!-- Load jQuery -->
-  <script src="../bower_components/jquery/dist/jquery.js"></script>
-
-  <!-- Load QUnit -->
-  <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css" media="screen">
-  <script src="../bower_components/qunit/qunit/qunit.js"></script>
-
-  <!-- Load lib and tests -->
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.14.0.css">
+  <script src="http://code.jquery.com/qunit/qunit-1.14.0.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="../src/jquery.boiler.js"></script>
   <script src="jquery-boiler.test.js"></script>
-
-  <!-- Removing access to jQuery and $. But it'll still be available as _$, if
-       you REALLY want to mess around with jQuery in the console. REMEMBER WE
-       ARE TESTING A PLUGIN HERE, THIS HELPS ENSURE BEST PRACTICES. REALLY. -->
-  <script>window._$ = jQuery.noConflict(true);</script>
 </head>
 <body>
 
