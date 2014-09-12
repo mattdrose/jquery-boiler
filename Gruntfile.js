@@ -38,17 +38,23 @@ module.exports = function (grunt) {
       }
     },
     connect: {
-      server: {
+      tests: {
         options: {
           hostname: '*',
           port: 9000
+        }
+      },
+      saucelabs: {
+        options: {
+          hostname: '*',
+          port: 9999
         }
       }
     },
     'saucelabs-qunit': {
       all: {
         options: {
-          urls: ['http://127.0.0.1:9000'],
+          urls: ['http://localhost:9999'],
           build: process.env.TRAVIS_JOB_ID,
           browsers: [
             // iOS
@@ -138,7 +144,7 @@ module.exports = function (grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'connect', 'qunit']);
-  grunt.registerTask('saucelabs', ['connect', 'saucelabs-qunit']);
-  grunt.registerTask('ci', ['jshint', 'connect', 'qunit', 'saucelabs']);
+  grunt.registerTask('default', ['jshint', 'connect:tests', 'qunit']);
+  grunt.registerTask('saucelabs', ['connect:saucelabs', 'saucelabs-qunit']);
+  grunt.registerTask('ci', ['default', 'saucelabs']);
 };
