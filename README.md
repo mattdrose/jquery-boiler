@@ -13,11 +13,11 @@ bower install jquery-boiler
 
 ## Usage
 
-Make sure jQuery-boiler is loaded before your plugin. Weather it be loaded as an AMD module, or a script tag in your header.
+Make sure jQuery Boiler is loaded before your plugin. Whether it be loaded as an AMD module, or a script tag in your header.
 
 ### Initiate
 
-Create a new plugin by passing it your plugins name and the base plugin object.
+Create a new plugin by passing `$.boiler` your plugins name and the *plugin object*.
 
 ``` javascript
 $.boiler('tooltip', {});
@@ -29,56 +29,15 @@ Once `$.boiler` has been run, you can call it like you would any other plugin.
 $('.js-tooltip').tooltip();
 ```
 
+And yes, this is chainable :).
+
 ## The Plugin Object
 
 The plugin object you pass contains your settings and variables, as well as your private and public methods. The plugin object is the heart of your plugin since you'll have access to this object via the ```this``` keyword in all of your private and public methods.
 
 Technically you can run this object however you want, but there are certain key items that the plugin object is expecting.
 
-### Using The Object
-
-#### `var plugin = this;`
-
-You can reference the plugin object from within a method by calling `this`. It's good practice to store this value into a plugin variable.
-
-##### Example
-
-``` javascript
-$.boiler('tooltip', {
-  open: function() {
-    var plugin = this;
-  }
-});
-```
-
-#### `plugin.$el`
-
-You have access to the dom element that the plugin has been bound to through `plugin.$el` (jQuery object), and `plugin.el` (dom element).
-
-#### `plugin.settings`
-
-`plugin.settings` are the settings for the plugin based on `defaults`, `options`, and `data`. `settings` take priority based on `data` > `options` > `defaults`.
-
-##### Example
-
-``` javascript
-$.boiler('tooltip', {
-  defaults: {
-    tip: 'This is the default tip.'
-  },
-  logTip: function() {
-    var plugin = this;
-    console.log(plugin.settings.tip);
-  }
-});
-
-$('.js-tooltip').tooltip({
-  tip: 'This is the user option tip.'
-}).tooltip('logTip');
-// Logs 'This is the user option tip.'
-```
-
-**Note**: The plugin object also gives you access to `plugin.defaults`, `plugin.options`, and `plugin.data`.
+**Understanding this concept requires you understand both [Setting Up The Object](#setting-up-the-object) and [Using The Object](#using-the-object).**
 
 ### Setting Up The Object
 
@@ -139,11 +98,11 @@ Now you can set `tip` using the dom elements `data-attribute`.
 <span class="js-tooltip" data-tip="Urr body in da club gettin tipsy!">Holla!</span>
 ```
 
-**Note*: This data value will overwrite both the default and user set values.
+**Note**: This data value will overwrite both the default and user set values.
 
 #### `init`
 
-`init` is a function that will automatically be run when the plugin is initiated. This is a good play to cache elements or do any heavy lifting to prepare the plugin for action.
+`init` is a function that will automatically be run when the plugin is initiated. This is a good place to cache elements or do any heavy lifting to prepare the plugin for action.
 
 ##### Example
 
@@ -167,7 +126,7 @@ $.boiler('tooltip', {
 
 #### `publicMethods`
 
-Public methods are methods that can easily be run by the user. These methods can be recognized by NOT have a prefixed underscore.
+Public methods are methods that can easily be run by the user.
 
 ##### Example
 
@@ -193,15 +152,62 @@ $('.js-tooltip').tooltip('open');
 
 **Note**: The user can pass variables to the function in the same way.
 
-``$('.js-tooltip').tooltip('updateTip', 'This is a new tip!');``
+``` javascript
+$('.js-tooltip').tooltip('updateTip', 'This is a new tip!');
+```
 
 #### `_privateMethods`
 
 Private methods are methods that can be run from within the plugin, but they can't be accessed by the user. These methods can be recognized by having a prefixed underscore.
 
+### Using The Object
+
+#### `var plugin = this;`
+
+You can reference the plugin object from within a method by calling `this`. It's good practice to store this value into a plugin variable.
+
+##### Example
+
+``` javascript
+$.boiler('tooltip', {
+  open: function() {
+    var plugin = this;
+  }
+});
+```
+
+#### `plugin.$el`
+
+You have access to the dom element that the plugin has been bound to through `plugin.$el` (jQuery object), and `plugin.el` (dom element).
+
+#### `plugin.settings`
+
+`plugin.settings` are the settings for the plugin based on `defaults`, `options`, and `data`. `settings` take priority based on `data` > `options` > `defaults`.
+
+##### Example
+
+``` javascript
+$.boiler('tooltip', {
+  defaults: {
+    tip: 'This is the default tip.'
+  },
+  logTip: function() {
+    var plugin = this;
+    console.log(plugin.settings.tip);
+  }
+});
+
+$('.js-tooltip').tooltip({
+  tip: 'This is the user option tip.'
+}).tooltip('logTip');
+// Logs 'This is the user option tip.'
+```
+
+**Note**: The plugin object also gives you access to `plugin.defaults`, `plugin.options`, and `plugin.data`.
+
 ### Hackability
 
-At any time, you can access the full plugin object using the cached `data-attribute`.
+At any time you can access the full plugin object using the cached `data-attribute`.
 
 ``` javascript
 $('#js-tooltip').tooltip({
