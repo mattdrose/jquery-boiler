@@ -7,69 +7,61 @@
  * @param {object} base - The base of your plugin
  */
 
-
-
-$.boiler('pluginName', {
+$.boiler('tooltip', {
 
   /* The default settings for the plugin. These can be overwritten by the
      options passed on initiation. */
   defaults: {
-    foo: 'bar',
-    doThis: false
+    tip: 'This is a tip!',
+    animationSpeed: 500
   },
 
   /* Events to bind onto the plugins dom element(s). You can use these events
      to call a function within the plugin. */
   events: {
-    click: '_privateMethod'
+    mouseEnter: 'open',
+    mouseLeave: 'close'
   },
 
-  /* A list of supported data-attribute variables. These will overwrite 
+  /* A list of supported data-attribute variables. These will overwrite
      both the defaults and the options in the plugins settings. */
-  data: ['foo'],
+  data: ['tip'],
 
   /* The function which runs on initiation. A good time to cache. */
   init: function(){
 
-    /* 'this' always refers to the plugin. It's good practice to store a 
+    /* 'this' always refers to the plugin. It's good practice to store a
        reference. */
     var plugin = this;
 
+    /* cache */
+    plugin.$wrapper =
+      $('<div/>').addClass('js-tooltip__wrapper');
+
+    plugin.$tip =
+      $('<div/>').addClass('js-tooltip__tip')
+                 .html(plugin.settings.tip);
+
     /* plugin.el and plugin.$el are references to the dom element. */
-    plugin.$foobar = plugin.$el.find('.foobar');
-
-    /* The plugin settings are created from data, options, and defaults.
-       Settings take priority as follows: data > options > defaults */
-    if(plugin.settings.doThis) plugin.settings.doThis.call(plugin.el);
-
-    /* The plugin object give you full access to the plugin */
-    plugin.publicMethod();
+    plugin.$el.wrap(plugin.$wrapper);
+    plugin.$wrapper.append(plugin.$tip);
 
   },
 
-  /* Private methods begin with _. These methods can't be accessed outside of
-     the plugin. */
-  _privateMethod: function(e){},
+  /* Public methods like this are accessible outside of the plugin. Private
+     methods begin with _. These methods can't be accessed outside of the
+     plugin. */
+  open: function(){
+    /* The plugin object gives you full access to the plugin */
+    var plugin = this;
 
-  /* Public methods are accessible outside of the plugin. */
-  publicMethod: function(message){
-    alert(message);
+    /* The plugin settings are created from data, options, and defaults.
+       Settings take priority as follows: data > options > defaults */
+    plugin.$tip.fadeIn(plugin.settings.animationSpeed);
+  },
+
+  close: function(){
+    var plugin = this;
+    plugin.$tip.fadeOut(plugin.settings.animationSpeed);
   }
-
 });
-
-
-
-
-// Initiate the plugin
-$('#js-hook').pluginName({
-  foo: 'dawg'
-});
-
-// Call a public method
-$('#js-hook').pluginName('plublicMethod', 'This is a message parameter');
-
-// Access the plugin object through the elements data object
-console.log( $('#js-hook').data('pluginName').settings.foo ); //dawg
-
-
