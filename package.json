@@ -1,6 +1,6 @@
 {
   "name": "jquery-boiler",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A jQuery plugin to help you quickly write custom jQuery plugins",
   "author": {
     "name": "Matt Rose",
