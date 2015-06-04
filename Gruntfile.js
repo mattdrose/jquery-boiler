@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         options: {
           jshintrc: './.jshintrc'
         },
-        src: ['./src/jquery.boiler.js']
+        src: ['./jquery.boiler.js']
       }
     },
     connect: {

@@ -1,6 +1,5 @@
 {
   "name": "jquery-boiler",
-  "version": "0.1.0",
   "title": "jQuery Boiler",
   "description": "A jQuery plugin to help you quickly write custom jQuery plugins.",
   "keywords": [
@@ -22,9 +21,7 @@
   },
   "bugs": "https://github.com/mattdrose/jquery-boiler/issues",
   "license": "MIT",
-  "main": [
-    "src/jquery.boiler.js"
-  ],
+  "main": "jquery.boiler.js",
   "ignore": [
     "test",
     "Gruntfile.js",

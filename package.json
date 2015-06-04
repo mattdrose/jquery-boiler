@@ -1,6 +1,6 @@
 {
   "name": "jquery-boiler",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A jQuery plugin to help you quickly write custom jQuery plugins",
   "author": {
     "name": "Matt Rose",
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/mattdrose/jquery-boiler"
   },
-  "main": "src/jquery.boiler.js",
+  "main": "jquery.boiler.js",
   "dependencies": {
     "jquery": ">=1.6"
   },
