@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.3
+
+    - Update commonjs declarations
+
 ## v0.2.2
 
     - Fix jquery typo for commonjs declaration
