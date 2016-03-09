@@ -19,11 +19,11 @@
 
     $.fn[namespace] = function () {
 
-      var args = Array.prototype.slice.call(arguments),
-        method = args[0],
-        options = args.slice(1),
-        selector = this.selector,
-        query = [];
+      var args = Array.prototype.slice.call(arguments);
+      var method = args[0];
+      var options = args.slice(1);
+      var selector = this.selector;
+      var query = [];
 
       return this.each(function () {
 
