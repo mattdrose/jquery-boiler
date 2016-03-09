@@ -3,7 +3,7 @@
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['jquery'], factory);
-  } else if (typeof exports === 'object') {
+  } else if (typeof module === 'object' && module.exports) {
     // Node/CommonJS
     module.exports = factory(require('jquery'));
   } else {
@@ -11,7 +11,7 @@
     factory(window.Zepto || jQuery);
   }
 
-})(function ($) {
+}(function ($) {
 
   'use strict';
 
@@ -95,4 +95,4 @@
 
   return $;
 
-});
+}));
